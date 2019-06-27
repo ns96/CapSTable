@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="PreSeriesAForm" cloudDestinationProperty="PreSeriesAForm" layout="GridLayout" gridLayoutRows="8" gridLayoutColumns="2" title="CONVERTIBLE NOTE ROUND - PRE-SERIES A" >
+  <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Investor Name" >
+  </component>
+  <component type="TextField" name="psarNameTextField" cloudBoundProperty="text" cloudDestinationProperty="psarNameTextField" scrollVisible="false" text="Jane Doe" >
+  </component>
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Year Raised" >
+  </component>
+  <component type="TextField" name="psarYearTextField" cloudBoundProperty="text" cloudDestinationProperty="psarYearTextField" text="2020" constraint="2" >
+  </component>
+  <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Amount Raised" >
+  </component>
+  <component type="TextField" name="psarRaisedTextField" cloudBoundProperty="text" cloudDestinationProperty="psarRaisedTextField" text="250000" constraint="2" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel" cloudDestinationProperty="SpanLabel" >
+    <custom name="text" type="java.lang.String" value="Discount to Series A Pre-Money Valuation" />
+  </component>
+  <component type="TextField" name="psarDiscountTextField" cloudBoundProperty="text" cloudDestinationProperty="psarDiscountTextField" text="15" constraint="2" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel1" cloudDestinationProperty="SpanLabel1" >
+    <custom name="text" type="java.lang.String" value="Series A Pre-Money Valuation" />
+  </component>
+  <component type="TextField" name="psarValutationTextField" cloudBoundProperty="text" cloudDestinationProperty="psarValuationTextField" enabled="false" text="$11,666,667" editable="true" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel2" cloudDestinationProperty="SpanLabel2" >
+    <custom name="text" type="java.lang.String" value="Conversion Valuation" />
+  </component>
+  <component type="TextField" name="psarConversionEvaluationTextField" cloudBoundProperty="text" cloudDestinationProperty="psarConversionEvaluationTextField" enabled="false" text="$9,916,667" editable="true" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel3" cloudDestinationProperty="SpanLabel3" >
+    <custom name="text" type="java.lang.String" value="Equity Percent" />
+  </component>
+  <component type="TextField" name="psarEquityTextField" cloudBoundProperty="text" cloudDestinationProperty="psarEquityTextField" enabled="false" text="2.52%" editable="true" >
+  </component>
+  <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="" >
+  </component>
+  <component type="Button" name="psarSetButton" cloudDestinationProperty="Button" text="SET" >
+  </component>
+</component>

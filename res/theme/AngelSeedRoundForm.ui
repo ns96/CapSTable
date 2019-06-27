@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="AngelSeedRoundForm" cloudDestinationProperty="AngelSeedRoundForm" layout="GridLayout" gridLayoutRows="8" gridLayoutColumns="2" title="ANGEL / SEED ROUND" >
+  <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Group Name" >
+  </component>
+  <component type="TextField" name="asrNameTextField" cloudBoundProperty="text" cloudDestinationProperty="asrNameTextField" text="Bio Angels" >
+  </component>
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Year Raised" >
+  </component>
+  <component type="TextField" name="asrYearTextField" cloudBoundProperty="text" cloudDestinationProperty="asrYearTextField" text="2020" >
+  </component>
+  <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="Amount Raised" >
+  </component>
+  <component type="TextField" name="asrRaiseTextField" cloudBoundProperty="text" cloudDestinationProperty="asrRaiseTextField" text="1000000" constraint="2" >
+  </component>
+  <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Percentage" >
+  </component>
+  <component type="TextField" name="asrPercentageTextField" cloudBoundProperty="text" cloudDestinationProperty="asrPercentageTextField" text="20" constraint="2" >
+  </component>
+  <component type="Label" name="Label4" cloudDestinationProperty="Label4" text="Valuation" >
+  </component>
+  <component type="TextField" name="asrValuationTextField" cloudBoundProperty="text" cloudDestinationProperty="asrValuationTextField" enabled="false" text="$5,000,000" editable="false" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel" cloudDestinationProperty="SpanLabel" >
+    <custom name="text" type="java.lang.String" value="Participating Preferred Return Preference" />
+  </component>
+  <component type="TextField" name="asrPrefTextField" cloudBoundProperty="text" cloudDestinationProperty="asrPrefTextField" text="1" constraint="2" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel1" cloudDestinationProperty="SpanLabel1" >
+    <custom name="text" type="java.lang.String" value="Cumulative Dividend" />
+  </component>
+  <component type="TextField" name="asrDividendTextField" cloudBoundProperty="text" cloudDestinationProperty="asrDividendTextField" text="0" constraint="2" >
+  </component>
+  <component type="Label" name="Label5" cloudDestinationProperty="Label5" text="" >
+  </component>
+  <component type="Button" name="asrSetButton" cloudDestinationProperty="Button" text="SET" >
+  </component>
+</component>

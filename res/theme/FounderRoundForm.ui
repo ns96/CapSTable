@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="FounderRoundForm" cloudDestinationProperty="FounderRoundForm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="FOUNDERS ROUND + EMPLOYEE OPTIONS" >
+  <component type="Container" name="Container5" cloudDestinationProperty="Container5" layout="BoxLayout" boxLayoutAxis="X" >
+    <layoutConstraint value="North" />
+    <component type="Label" name="Label5" cloudDestinationProperty="Label5" text="Number Of Shares" >
+    </component>
+    <component type="TextField" name="sharesTextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" scrollVisible="false" text="1000000" constraint="2" >
+    </component>
+  </component>
+  <component type="Container" name="Container" cloudDestinationProperty="Container" scrollableY="true" layout="TableLayout" tableLayoutRows="10" tableLayoutColumns="3" >
+    <layoutConstraint value="Center" />
+    <component type="TextField" name="founder1TextField" cloudBoundProperty="text" cloudDestinationProperty="founder1TextField" uiid="TextField" text="Founder 1" >
+    </component>
+    <component type="TextField" name="founder1PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder1PercentTextField" text="45" constraint="2" columns="5" >
+      <layoutConstraint row="-1" column="-1" height="-1" width="-1" align="-1" spanHorizontal="1" valign="-1" spanVertical="1" />
+    </component>
+    <component type="Label" name="founder1Label" cloudDestinationProperty="founder1Label" text="450000" >
+      <layoutConstraint row="-1" column="-1" height="-1" width="25" align="-1" spanHorizontal="1" valign="-1" spanVertical="1" />
+    </component>
+    <component type="TextField" name="founder2TextField" cloudBoundProperty="text" cloudDestinationProperty="founder2TextField" text="Founder 2" >
+    </component>
+    <component type="TextField" name="founder2PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder2PercentTextField" text="45" constraint="2" columns="10" >
+    </component>
+    <component type="Label" name="founder2Label" cloudDestinationProperty="founder2Label" text="450000" >
+    </component>
+    <component type="TextField" name="founder3TextField" cloudBoundProperty="text" cloudDestinationProperty="founder3TextField" text="" hint="Founder 3?" >
+    </component>
+    <component type="TextField" name="founder3PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder3PercentTextField" text="" constraint="2" hint="%" columns="10" >
+    </component>
+    <component type="Label" name="founder3Label" cloudDestinationProperty="founder3Label" text="" >
+    </component>
+    <component type="TextField" name="founder4TextField" cloudBoundProperty="text" cloudDestinationProperty="founder4TextField" text="" hint="Founder 4?" >
+    </component>
+    <component type="TextField" name="founder4PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder4PercentTextField" text="" constraint="2" hint="%" columns="10" >
+    </component>
+    <component type="Label" name="founder4Label" cloudDestinationProperty="founder4Label" text="" >
+    </component>
+    <component type="TextField" name="founder5TextField" cloudBoundProperty="text" cloudDestinationProperty="founder5TextField" text="" hint="Founder 5?" >
+    </component>
+    <component type="TextField" name="founder5PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder5PercentTextField" text="" constraint="2" hint="%" columns="10" >
+    </component>
+    <component type="Label" name="founder5Label" cloudDestinationProperty="founder5Label" text="" >
+    </component>
+    <component type="TextField" name="founder6TextField" cloudBoundProperty="text" cloudDestinationProperty="founder6TextField" text="" hint="Founder 6?" >
+    </component>
+    <component type="TextField" name="founder6PercentTextField" cloudBoundProperty="text" cloudDestinationProperty="founder6PercentTextField" text="" constraint="2" hint="%" columns="10" >
+    </component>
+    <component type="Label" name="founder6Label" cloudDestinationProperty="founder6Label" text="" >
+    </component>
+    <component type="TextField" name="employeeTextField" cloudBoundProperty="text" cloudDestinationProperty="employeeTextField" text="Empl. Options" editable="false" hint="Enter Employee Options" >
+    </component>
+    <component type="TextField" name="employeePercentTextField" cloudBoundProperty="text" cloudDestinationProperty="employeePercentTextField" text="10" constraint="2" hint="Enter %" columns="10" >
+    </component>
+    <component type="Label" name="employeeLabel" cloudDestinationProperty="employeeLabel" text="100000" >
+    </component>
+    <component type="TextField" name="totalTextField" cloudBoundProperty="text" cloudDestinationProperty="totalTextField" enabled="false" text="Total" editable="true" hint="[null]" >
+    </component>
+    <component type="TextField" name="totalPercentTextField" cloudBoundProperty="text" cloudDestinationProperty="totalPercentTextField" enabled="false" text="100" constraint="2" editable="true" hint="" columns="10" >
+    </component>
+    <component type="Label" name="totalLabel" cloudDestinationProperty="totalLabel" text="1000000" >
+    </component>
+    <component type="Label" name="Label" cloudDestinationProperty="Label" text="" >
+    </component>
+    <component type="Button" name="setFoundersInputButton" cloudDestinationProperty="Button" text="SET" textPosition="3" >
+      <layoutConstraint row="-1" column="-1" height="-1" width="-1" align="-1" spanHorizontal="2" valign="-1" spanVertical="1" />
+    </component>
+  </component>
+</component>

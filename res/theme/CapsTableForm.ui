@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="CapsTableForm" cloudDestinationProperty="CapsTableForm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Capitalization Tables" >
+  <component type="Tabs" name="capsTableTabs" cloudDestinationProperty="Tabs" >
+    <layoutConstraint value="Center" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Founders Round</str>
+      <str>Friends &amp; Family</str>
+      <str>Angel / Seed</str>
+      <str>Series A</str>
+    </custom>
+    <component type="Container" name="frContainer" tabTitle="Founders Round" cloudDestinationProperty="Container" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+    <component type="Container" name="fafrContainer" tabTitle="Friends &amp; Family" cloudDestinationProperty="Container1" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+    <component type="Container" name="asrContainer" tabTitle="Angel / Seed" cloudDestinationProperty="Container2" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+    <component type="Container" name="sarContainer" tabTitle="Series A" cloudDestinationProperty="Container3" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+  </component>
+</component>

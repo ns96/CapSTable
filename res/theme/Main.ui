@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Cap (Simple) Table Lite v0.1.36" >
+  <component type="Tabs" name="Tabs1" cloudDestinationProperty="Tabs1" >
+    <layoutConstraint value="Center" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Inputs</str>
+      <str>Cap Table</str>
+      <str>Waterfall</str>
+      <str>About</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Inputs" cloudDestinationProperty="Container" scrollableY="true" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Button" name="foundersButton" cloudDestinationProperty="foundersButton" commandName="FOUNDERS &amp; EMPLOYEE OPTIONS" commandId="2" commandAction="FounderRoundForm" commandBack="false" text="FOUNDERS &amp; EMPLOYEE OPTIONS" >
+      </component>
+      <component type="Button" name="friendsFamily1Button" cloudDestinationProperty="friendsFamily1Button" commandName="FRIENDS &amp; FAMILY ROUND #1" commandId="3" commandAction="FriendsFamilyRound1Form" commandBack="false" text="FRIENDS &amp; FAMILY ROUND #1" >
+      </component>
+      <component type="Button" name="friendsFamily2Button" cloudDestinationProperty="friendsFamily2Button" commandName="FRIENDS &amp; FAMILY ROUND #2" commandId="4" commandAction="FriendsFamilyRound2Form" commandBack="false" text="FRIENDS &amp; FAMILY ROUND #2" >
+      </component>
+      <component type="Button" name="angelSeedButton" cloudDestinationProperty="angelSeedButton" commandName="ANGEL / SEED ROUND" commandId="5" commandAction="AngelSeedRoundForm" commandBack="false" text="ANGEL / SEED ROUND" >
+      </component>
+      <component type="Button" name="preSeriesAButton" cloudDestinationProperty="preSeriesAButton" commandName="PRE-SERIES A ROUND" commandId="6" commandAction="PreSeriesAForm" commandBack="false" text="PRE-SERIES A ROUND" >
+      </component>
+      <component type="Button" name="seriesAButton" cloudDestinationProperty="seriesAButton" commandName="SERIES A ROUND" commandId="7" commandAction="SeriesAForm" commandBack="false" text="SERIES A ROUND" >
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Cap Table" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Button" name="capTableFoundersButton" cloudDestinationProperty="Button1" text="FOUNDERS ROUND" >
+      </component>
+      <component type="Button" name="capTableFriendFamilyButton" cloudDestinationProperty="Button2" text="FRIENDS &amp; FAMILY ROUND" >
+      </component>
+      <component type="Button" name="capTableAngelSeedButton" cloudDestinationProperty="Button" text="ANGEL/ SEED ROUND" >
+      </component>
+      <component type="Button" name="capTableSeriesAButton" cloudDestinationProperty="Button3" text="SERIES A ROUND" >
+      </component>
+    </component>
+    <component type="Container" name="Container2" tabTitle="Waterfall" cloudDestinationProperty="Container2" scrollableY="true" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Label" name="Label" cloudDestinationProperty="Label" text="Enter Buyout Price:" >
+      </component>
+      <component type="TextField" name="buyoutTextField" cloudBoundProperty="text" cloudDestinationProperty="buyoutTextField" text="500000000" constraint="2" >
+      </component>
+      <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Exit Year:" >
+      </component>
+      <component type="TextField" name="exitYearTextField" cloudBoundProperty="text" cloudDestinationProperty="exitYearTextField" text="2024" constraint="2" >
+      </component>
+      <component type="Button" name="viewWaterfallButton" cloudDestinationProperty="Button" commandName="VIEW" commandId="8" commandAction="WaterfallForm" commandBack="false" text="VIEW" >
+      </component>
+    </component>
+    <component type="Container" name="Container3" tabTitle="About" cloudDestinationProperty="Container3" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="TextArea" name="aboutTextArea" cloudBoundProperty="text" cloudDestinationProperty="aboutTextArea" text="" growByContent="true" editable="false" >
+        <layoutConstraint value="Center" />
+      </component>
+      <component type="Button" name="resetButton" cloudDestinationProperty="resetButton" text="RESET DATA" >
+        <layoutConstraint value="South" />
+      </component>
+    </component>
+  </component>
+  <component type="Container" name="Container4" cloudDestinationProperty="Container4" layout="GridLayout" gridLayoutRows="2" gridLayoutColumns="2" >
+    <layoutConstraint value="North" />
+    <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="Company Name" >
+    </component>
+    <component type="TextField" name="companyNameTextField" cloudBoundProperty="text" cloudDestinationProperty="companyNameTextField" text="Acme, Inc." >
+    </component>
+    <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Year Founded" >
+    </component>
+    <component type="TextField" name="yearFoundedTextField" cloudBoundProperty="text" cloudDestinationProperty="yearFoundedTextField" text="2019" constraint="2" >
+    </component>
+  </component>
+</component>

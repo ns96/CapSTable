@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="SeriesAForm" cloudDestinationProperty="SeriesAForm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="SERIES A ROUND" >
+  <component type="Container" name="Container2" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="X" >
+    <layoutConstraint value="North" />
+    <component type="Label" name="Label" cloudDestinationProperty="Label" text="Year Raised" >
+    </component>
+    <component type="TextField" name="sarYearTextField" cloudBoundProperty="text" cloudDestinationProperty="sarYearTextField" text="2021" constraint="2" >
+    </component>
+  </component>
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
+    <layoutConstraint value="Center" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Fund #1</str>
+      <str>Fund #2</str>
+      <str>Fund #3</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Fund #1" cloudDestinationProperty="Container" scrollableY="true" layout="GridLayout" gridLayoutRows="6" gridLayoutColumns="2" >
+      <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Fund Name" >
+      </component>
+      <component type="TextField" name="sarName1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarName1TextField" text="VC Group" >
+      </component>
+      <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="Amount Raised" >
+      </component>
+      <component type="TextField" name="sarRaise1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarRaise1TextField" text="5000000" constraint="2" >
+      </component>
+      <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Percentage" >
+      </component>
+      <component type="TextField" name="sarPercentage1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPercentage1TextField" text="30" constraint="2" >
+      </component>
+      <component type="Label" name="Label4" cloudDestinationProperty="Label4" text="Valuation" >
+      </component>
+      <component type="TextField" name="sarValuation1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarValuation1TextField" enabled="false" text="$16,666,667" editable="true" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel" cloudDestinationProperty="SpanLabel" >
+        <custom name="text" type="java.lang.String" value="Participating Preferred Return Preference" />
+      </component>
+      <component type="TextField" name="sarPref1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPref1TextField" text="1" constraint="2" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel1" cloudDestinationProperty="SpanLabel1" >
+        <custom name="text" type="java.lang.String" value="Cumulative Dividend" />
+      </component>
+      <component type="TextField" name="sarDividend1TextField" cloudBoundProperty="text" cloudDestinationProperty="sarDividend1TextField" text="0" constraint="2" >
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Fund #2" cloudDestinationProperty="Container1" scrollableY="true" layout="GridLayout" gridLayoutRows="7" gridLayoutColumns="2" >
+      <component type="Label" name="Label11" cloudDestinationProperty="Label1" text="Fund Name" >
+      </component>
+      <component type="TextField" name="sarName2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarName2TextField" text="" >
+      </component>
+      <component type="Label" name="Label21" cloudDestinationProperty="Label2" text="Amount Raised" >
+      </component>
+      <component type="TextField" name="sarRaise2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarRaise2TextField" text="" constraint="2" >
+      </component>
+      <component type="Label" name="Label31" cloudDestinationProperty="Label3" text="Percentage" >
+      </component>
+      <component type="TextField" name="sarPercentage2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPercentage2TextField" text="" constraint="2" >
+      </component>
+      <component type="Label" name="Label41" cloudDestinationProperty="Label4" text="Valuation" >
+      </component>
+      <component type="TextField" name="sarValuation2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarValuation2TextField" enabled="false" text="" editable="true" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel2" cloudDestinationProperty="SpanLabel" >
+        <custom name="text" type="java.lang.String" value="Participating Preferred Return Preference" />
+      </component>
+      <component type="TextField" name="sarPref2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPref2TextField" text="" constraint="2" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel11" cloudDestinationProperty="SpanLabel1" >
+        <custom name="text" type="java.lang.String" value="Cumulative Dividend" />
+      </component>
+      <component type="TextField" name="sarDividend2TextField" cloudBoundProperty="text" cloudDestinationProperty="sarDividend2TextField" text="" constraint="2" >
+      </component>
+    </component>
+    <component type="Container" name="Container3" tabTitle="Fund #3" cloudDestinationProperty="Container3" scrollableY="true" layout="GridLayout" gridLayoutRows="7" gridLayoutColumns="2" >
+      <component type="Label" name="Label111" cloudDestinationProperty="Label1" text="Fund Name" >
+      </component>
+      <component type="TextField" name="sarName3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarName3TextField" text="" >
+      </component>
+      <component type="Label" name="Label211" cloudDestinationProperty="Label2" text="Amount Raised" >
+      </component>
+      <component type="TextField" name="sarRaise3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarRaise3TextField" text="" constraint="2" >
+      </component>
+      <component type="Label" name="Label311" cloudDestinationProperty="Label3" text="Percentage" >
+      </component>
+      <component type="TextField" name="sarPercentage3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPercentage3TextField" text="" constraint="2" >
+      </component>
+      <component type="Label" name="Label411" cloudDestinationProperty="Label4" text="Valuation" >
+      </component>
+      <component type="TextField" name="sarValuation3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarValuation3TextField" enabled="false" text="" editable="true" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel21" cloudDestinationProperty="SpanLabel" >
+        <custom name="text" type="java.lang.String" value="Participating Preferred Return Preference" />
+      </component>
+      <component type="TextField" name="sarPref3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarPref3TextField" text="" constraint="2" >
+      </component>
+      <component type="SpanLabel" name="SpanLabel111" cloudDestinationProperty="SpanLabel1" >
+        <custom name="text" type="java.lang.String" value="Cumulative Dividend" />
+      </component>
+      <component type="TextField" name="sarDividend3TextField" cloudBoundProperty="text" cloudDestinationProperty="sarDividend3TextField" text="" constraint="2" >
+      </component>
+    </component>
+  </component>
+  <component type="Container" name="Container5" cloudDestinationProperty="Container5" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
+    <layoutConstraint value="South" />
+    <component type="Label" name="Label5" cloudDestinationProperty="Label5" text="" >
+    </component>
+    <component type="Button" name="sarSetButton" cloudDestinationProperty="Button" text="SET" >
+    </component>
+  </component>
+</component>

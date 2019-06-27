@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="WaterfallForm" cloudDestinationProperty="WaterfallForm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="WATERFALL" >
+  <component type="Tabs" name="waterfallTabs" cloudDestinationProperty="waterfallTabs" >
+    <layoutConstraint value="Center" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Return Preferences</str>
+      <str>Cummulative Dividends</str>
+      <str>Proceeds to the Common Equity Holders</str>
+    </custom>
+    <component type="Container" name="rpContainer" tabTitle="Return Preferences" cloudDestinationProperty="Container" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+    <component type="Container" name="cdContainer" tabTitle="Cummulative Dividends" cloudDestinationProperty="Container1" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+    <component type="Container" name="pcehContainer" tabTitle="Proceeds to the Common Equity Holders" cloudDestinationProperty="Container2" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    </component>
+  </component>
+</component>

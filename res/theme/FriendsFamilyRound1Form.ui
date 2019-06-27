@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="FriendsFamilyRound1Form" cloudDestinationProperty="FriendsFamilyRound1Form" layout="GridLayout" gridLayoutRows="7" gridLayoutColumns="2" title="FRIENDS &amp; FAMILY ROUND #1" >
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Year Raised" >
+  </component>
+  <component type="TextField" name="ffr1YearTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1YearTextField" text="2019" constraint="2" >
+  </component>
+  <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Amount Raised" >
+  </component>
+  <component type="TextField" name="ffr1RaisedTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1RaisedTextField" text="100000" constraint="2" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel" cloudDestinationProperty="SpanLabel" >
+    <custom name="text" type="java.lang.String" value="Discount to Series A Pre-Money Valuation" />
+  </component>
+  <component type="TextField" name="ffr1DiscountTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1DiscountTextField" text="25" constraint="2" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel1" cloudDestinationProperty="SpanLabel1" >
+    <custom name="text" type="java.lang.String" value="Series A Pre-Money Valuation" />
+  </component>
+  <component type="TextField" name="ffr1ValuationTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1ValuationTextField" enabled="false" text="$4000000" editable="true" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel2" cloudDestinationProperty="SpanLabel2" >
+    <custom name="text" type="java.lang.String" value="Friends &amp; Family Conversion Valuation" />
+  </component>
+  <component type="TextField" name="ffr1ConversionValuationTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1ConversionEvaluationTextField" enabled="false" text="$3000000" editable="true" >
+  </component>
+  <component type="SpanLabel" name="SpanLabel3" cloudDestinationProperty="SpanLabel3" >
+    <custom name="text" type="java.lang.String" value="Friends &amp; Family Equity Percent" />
+  </component>
+  <component type="TextField" name="ffr1EquityTextField" cloudBoundProperty="text" cloudDestinationProperty="ffr1EquityTextField" enabled="false" text="3.33%" editable="false" >
+  </component>
+  <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="" >
+  </component>
+  <component type="Button" name="ffr1SetButton" cloudDestinationProperty="Button" text="SET" >
+  </component>
+</component>
