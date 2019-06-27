@@ -654,7 +654,7 @@ public class CapsTable {
      */
     public Table getProceedsToCommonEquityHoldersTable() {
         float totalProceeds = Preferences.get(EXIT_AMOUNT, 0L) - (returnPreferenceTotal + cummulativeDividendsTotal);
-        String proceeds = "TOTAL: " + formatCurrency(totalProceeds);
+        String proceeds = "(" + formatCurrency(totalProceeds) + ")";
         
         String[] f1s = getProceeds(totalProceeds, FOUNDER1_EQUITY);
         String[] f2s = getProceeds(totalProceeds, FOUNDER2_EQUITY);

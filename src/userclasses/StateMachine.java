@@ -50,7 +50,7 @@ public class StateMachine extends StateMachineBase {
             capsTable.setDefaultInputValues();
             Preferences.set("set.default.values", false);
         }
-        
+                
         tabIndex = 0;
         capTableTabIndex = 0;
         
