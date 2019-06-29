@@ -1056,18 +1056,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findResetButton(Component root) {
-        return (com.codename1.ui.Button)findByName("resetButton", root);
-    }
-
-    public com.codename1.ui.Button findResetButton() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("resetButton", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("resetButton", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Tabs findTabs1(Component root) {
         return (com.codename1.ui.Tabs)findByName("Tabs1", root);
     }
@@ -2891,10 +2879,6 @@ public abstract class StateMachineBase extends UIBuilder {
                 onMain_AboutTextAreaAction(c, event);
                 return;
             }
-            if("resetButton".equals(c.getName())) {
-                onMain_ResetButtonAction(c, event);
-                return;
-            }
             if("companyNameTextField".equals(c.getName())) {
                 onMain_CompanyNameTextFieldAction(c, event);
                 return;
@@ -3150,9 +3134,6 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onMain_AboutTextAreaAction(Component c, ActionEvent event) {
-      }
-
-      protected void onMain_ResetButtonAction(Component c, ActionEvent event) {
       }
 
       protected void onMain_CompanyNameTextFieldAction(Component c, ActionEvent event) {

@@ -75,6 +75,15 @@ public class StateMachine extends StateMachineBase {
     
     @Override
     protected void beforeMain(Form f) {
+        // add the side menues
+        Toolbar tb = f.getToolbar();
+        
+        tb.addMaterialCommandToSideMenu("QR Share", FontImage.MATERIAL_FOLDER_SHARED, 
+                e -> {capsTable.getInputData();});
+        
+        tb.addMaterialCommandToSideMenu("Reset Data", FontImage.MATERIAL_DELETE, 
+                e -> {resetToDefaultValues();}); 
+
         // add a change listener to tab
         Tabs tabs = findTabs1(f);
         
@@ -704,8 +713,7 @@ public class StateMachine extends StateMachineBase {
      * @param c
      * @param event 
      */
-    @Override
-    protected void onMain_ResetButtonAction(Component c, ActionEvent event) {
+    protected void resetToDefaultValues() {
         if(Dialog.show("Reset Data", "Really delete current input data and reset to default values?  This cannot be undone!", "YES", "NO")) {
             capsTable.setDefaultInputValues();
             Form f = Display.getInstance().getCurrent();

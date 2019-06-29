@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Main" cloudDestinationProperty="Main" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Cap (Simple) Table Lite v0.1.37" >
+<component type="Form" name="Main" cloudDestinationProperty="Main" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Cap (Simple) Table Lite v0.1.39" >
   <component type="Tabs" name="Tabs1" cloudDestinationProperty="Tabs1" >
     <layoutConstraint value="Center" />
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
@@ -48,9 +48,6 @@
     <component type="Container" name="Container3" tabTitle="About" cloudDestinationProperty="Container3" scrollableY="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
       <component type="TextArea" name="aboutTextArea" cloudBoundProperty="text" cloudDestinationProperty="aboutTextArea" text="" growByContent="true" editable="false" >
         <layoutConstraint value="Center" />
-      </component>
-      <component type="Button" name="resetButton" cloudDestinationProperty="resetButton" text="RESET DATA" >
-        <layoutConstraint value="South" />
       </component>
     </component>
   </component>

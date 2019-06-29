@@ -2,6 +2,7 @@ package com.instras.capstable;
 
 
 import com.codename1.io.Preferences;
+import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Form;
@@ -168,7 +169,7 @@ public class CapsTable {
      * Method to set the default values on initial run
      */
     public void setDefaultInputValues() {
-        //clear all previous values preferences
+        //clear all previously stored values 
         Preferences.clearAll();
         
         // company defaults
@@ -230,6 +231,83 @@ public class CapsTable {
         
         Preferences.set(EXIT_AMOUNT, 200000000L);
         Preferences.set(EXIT_YEAR, currentYear + 5);
+    }
+    
+    /**
+     * Method to return the input data as a string for QR code generation
+     * @return 
+     */
+    public String getInputData() {
+        String inputData = Preferences.get(COMPANY_NAME, "") + "\n" +
+                Preferences.get(COMPANY_YEAR, 0) + "\n" +
+                Preferences.get(COMPANY_SHARES, 0) + "\n" +
+        
+                Preferences.get(FOUNDER1_NAME, "") + "\n" +
+                Preferences.get(FOUNDER1_PERCENT, 0) + "\n" +
+                Preferences.get(FOUNDER2_NAME, "") + "\n" +
+                Preferences.get(FOUNDER2_PERCENT, 0) + "\n" +
+                Preferences.get(FOUNDER3_NAME, "") + "\n" +
+                Preferences.get(FOUNDER3_PERCENT, 0) + "\n" +
+                Preferences.get(FOUNDER4_NAME, "") + "\n" +
+                Preferences.get(FOUNDER4_PERCENT, 0) + "\n" +
+                Preferences.get(FOUNDER5_NAME, "") + "\n" +
+                Preferences.get(FOUNDER5_PERCENT, 0) + "\n" +
+                Preferences.get(FOUNDER6_NAME, "") + "\n" +
+                Preferences.get(FOUNDER6_PERCENT, 0) + "\n" +
+                Preferences.get(EMPLOYEE_PERCENT, 0);
+        
+        // family and friends 1 defaults
+        Preferences.set(FF1_AMOUNT, 100000);
+        Preferences.set(FF1_DISCOUNT, 25);
+        Preferences.set(FF1_YEAR, currentYear);
+        
+        // family and friends 1 defaults
+        Preferences.set(FF2_AMOUNT, 150000);
+        Preferences.set(FF2_DISCOUNT, 20);
+        Preferences.set(FF2_YEAR, currentYear);
+        
+        // angel / seed input defaults
+        Preferences.set(ANGEL_NAME, "Bio Angels");
+        Preferences.set(ANGEL_AMOUNT, 1000000);
+        Preferences.set(ANGEL_PERCENTAGE, 20);
+        Preferences.set(ANGEL_RETURN_PREF, 1);
+        Preferences.set(ANGEL_DIVIDEND, 0);
+        Preferences.set(ANGEL_YEAR, currentYear + 1);
+        
+        // pre series A defaults
+        Preferences.set(PSA_NAME, "Jane Doe");
+        Preferences.set(PSA_AMOUNT, 250000);
+        Preferences.set(PSA_DISCOUNT, 15);
+        Preferences.set(PSA_YEAR, currentYear + 1);
+        
+        // defaults for series A
+        Preferences.set(SA_YEAR, currentYear + 2);
+        
+        Preferences.set(SA1_NAME, "VC Group");
+        Preferences.set(SA1_AMOUNT, 5000000);
+        Preferences.set(SA1_PERCENTAGE, 30);
+        Preferences.set(SA1_RETURN_PREF, 1);
+        Preferences.set(SA1_DIVIDEND, 0);
+        
+        Preferences.set(SA2_NAME, "");
+        Preferences.set(SA2_AMOUNT, 0);
+        Preferences.set(SA2_PERCENTAGE, 0);
+        Preferences.set(SA2_RETURN_PREF, 1);
+        Preferences.set(SA2_DIVIDEND, 0);
+        
+        Preferences.set(SA3_NAME, "");
+        Preferences.set(SA3_AMOUNT, 0);
+        Preferences.set(SA3_PERCENTAGE, 0);
+        Preferences.set(SA3_RETURN_PREF, 1);
+        Preferences.set(SA3_DIVIDEND, 0);
+        
+        Preferences.set(EXIT_AMOUNT, 200000000L);
+        Preferences.set(EXIT_YEAR, currentYear + 5);
+        
+        inputData = Util.encodeUrl(inputData);
+        System.out.println("Input Data" + inputData + "\n\nLength: " + inputData.length());
+        
+        return inputData;
     }
     
     /**

@@ -291,6 +291,8 @@
     <image name="switch_on.png3" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <font key="SideCommand.font" type="ttf" face="0" style="0" size="16" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
+        <val key="SideNavigationPanel.bgColor" value="ffffff" />
         <font key="Title.font" type="system" face="0" style="1" size="0" />
     </theme>
     <image name="TitleArea.borderBottom_2.png" type="multi"  />
