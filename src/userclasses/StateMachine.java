@@ -9,6 +9,7 @@ package userclasses;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.io.Preferences;
+import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
 import generated.StateMachineBase;
 import com.codename1.ui.*; 
@@ -18,6 +19,7 @@ import com.codename1.ui.util.Resources;
 import com.codename1.util.MathUtil;
 import com.instras.capstable.CapsTable;
 import static com.instras.capstable.CapsTable.*;
+import java.util.Date;
 
 /**
  *
@@ -29,6 +31,9 @@ public class StateMachine extends StateMachineBase {
     private String aboutText;
     private CapsTable capsTable;
     private final boolean DEBUG = false;
+    
+    // used to generate QR code from input data
+    private final String QR_URL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -78,8 +83,11 @@ public class StateMachine extends StateMachineBase {
         // add the side menues
         Toolbar tb = f.getToolbar();
         
-        tb.addMaterialCommandToSideMenu("QR Share", FontImage.MATERIAL_FOLDER_SHARED, 
-                e -> {capsTable.getInputData();});
+        tb.addMaterialCommandToSideMenu("QR Send", FontImage.MATERIAL_CLOUD_UPLOAD, 
+                e -> {sendQRInput();});
+        
+        tb.addMaterialCommandToSideMenu("QR Receive", FontImage.MATERIAL_CLOUD_DOWNLOAD, 
+                e -> {receiveQRInput();});
         
         tb.addMaterialCommandToSideMenu("Reset Data", FontImage.MATERIAL_DELETE, 
                 e -> {resetToDefaultValues();}); 
@@ -722,4 +730,31 @@ public class StateMachine extends StateMachineBase {
             System.out.println("Smart choice ...");
         }
     }
+    
+    /**
+     * Show input values as QR code for sharing with someone else
+     */
+    private void sendQRInput() {
+        String inputData = Util.encodeUrl(capsTable.getInputData());
+        String filename = new Date().getTime() + "_QR.png"; // must have unique name otherwise the cached imaged is used
+        
+        Form f = Display.getInstance().getCurrent();
+        int size = (int) (0.90*f.getWidth());
+        EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(size, size, 0xffff0000), true);
+        URLImage qrcode = URLImage.createToStorage(placeholder, filename, QR_URL + inputData);
+        
+        qrcode.fetch();
+        Label label = new Label("", qrcode);
+        
+        Dialog.show("QR Send", label, new Command("OK"));
+    }
+    
+    /**
+     * Method to read qr code containing the input
+     */
+    private void receiveQRInput() {
+        
+        
+    }
+    
 }
