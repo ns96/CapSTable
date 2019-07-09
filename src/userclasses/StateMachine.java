@@ -8,6 +8,8 @@
 package userclasses;
 
 import com.codename1.charts.util.ColorUtil;
+import com.codename1.ext.codescan.CodeScanner;
+import com.codename1.ext.codescan.ScanResult;
 import com.codename1.io.Preferences;
 import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
@@ -19,6 +21,8 @@ import com.codename1.ui.util.Resources;
 import com.codename1.util.MathUtil;
 import com.instras.capstable.CapsTable;
 import static com.instras.capstable.CapsTable.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 
 /**
@@ -30,7 +34,7 @@ public class StateMachine extends StateMachineBase {
     private int capTableTabIndex;
     private String aboutText;
     private CapsTable capsTable;
-    private final boolean DEBUG = false;
+    private final boolean DEBUG = true;
     
     // used to generate QR code from input data
     private final String QR_URL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
@@ -736,7 +740,9 @@ public class StateMachine extends StateMachineBase {
      */
     private void sendQRInput() {
         String inputData = Util.encodeUrl(capsTable.getInputData());
-        String filename = new Date().getTime() + "_QR.png"; // must have unique name otherwise the cached imaged is used
+        
+        // must have unique name otherwise the cached imaged is used which doesn't make sense
+        String filename = new Date().getTime() + "_QR.png";
         
         Form f = Display.getInstance().getCurrent();
         int size = (int) (0.90*f.getWidth());
@@ -750,11 +756,50 @@ public class StateMachine extends StateMachineBase {
     }
     
     /**
-     * Method to read qr code containing the input
+     * Method to read QR code containing the input
      */
     private void receiveQRInput() {
+        if (CodeScanner.isSupported()) {
+            CodeScanner.getInstance().scanQRCode(new ScanResult() {
+
+                @Override
+                public void scanCompleted(String contents, String formatName, byte[] rawBytes) {
+                    System.out.println("QR Scane Data:" + contents);
+                    capsTable.setInputData(contents);
+                    
+                }
+
+                @Override
+                public void scanCanceled() {
+                    System.out.println("cancelled");
+                }
+
+                @Override
+                public void scanError(int errorCode, String message) {
+                    System.out.println("err " + message);
+                }
+            });
+        } else {
+            System.out.println("QRCode scanner not supported ...");
+
+            if (DEBUG) {
+                InputStream in = Display.getInstance().getResourceAsStream(
+                        getClass(), "/DemoData.txt");
+                if (in != null) {
+                    try {
+                        String text = Util.readToString(in);
+                        capsTable.setInputData(text);
+                        in.close();
+                    } catch (IOException ex) {
+                        System.out.println(ex);
+                    }
+                }
+            }
+        }
         
-        
+        // update the UI now
+        // update the UI now
+        Form f = Display.getInstance().getCurrent();
+        updateMainFormInputs(f);
     }
-    
 }

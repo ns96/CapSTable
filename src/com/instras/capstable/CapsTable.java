@@ -2,6 +2,7 @@ package com.instras.capstable;
 
 
 import com.codename1.io.Preferences;
+import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Form;
@@ -233,7 +234,10 @@ public class CapsTable {
     }
     
     /**
-     * Method to return the input data as a string for QR code generation
+     * Method to return the input data as a string for QRCode 
+     * generation. We really should use key/value pairs here, but
+     * with QRCode the text need to be as short as possible
+     * 
      * @return 
      */
     public String getInputData() {
@@ -291,6 +295,72 @@ public class CapsTable {
         System.out.println("Input Data: \n" + inputData + "\n\nLength: " + inputData.length());
         
         return inputData;
+    }
+    
+    /**
+     * Method to load the input data from a string. This assumes that the data
+     * is separated by new line characters since the input data is coming from
+     * a QRCode
+     * 
+     * @param text 
+     */
+    public void setInputData(String text) {
+        // split text into array
+        String[] data  = Util.split(text, "\n");
+        
+        Preferences.set(COMPANY_NAME, data[0]);
+        Preferences.set(COMPANY_YEAR, Integer.parseInt(data[1]));
+        Preferences.set(COMPANY_SHARES, Integer.parseInt(data[2]));
+        Preferences.set(FOUNDER1_NAME, data[3]);
+        Preferences.set(FOUNDER1_PERCENT, Integer.parseInt(data[4]));
+        Preferences.set(FOUNDER2_NAME, data[5]);
+        Preferences.set(FOUNDER2_PERCENT, Integer.parseInt(data[6]));
+        Preferences.set(FOUNDER3_NAME, data[7]);
+        Preferences.set(FOUNDER3_PERCENT, Integer.parseInt(data[8]));
+        Preferences.set(FOUNDER4_NAME, data[9]);
+        Preferences.set(FOUNDER4_PERCENT, Integer.parseInt(data[10]));
+        Preferences.set(FOUNDER5_NAME, data[11]);
+        Preferences.set(FOUNDER5_PERCENT, Integer.parseInt(data[12]));
+        Preferences.set(FOUNDER6_NAME, data[13]);
+        Preferences.set(FOUNDER6_PERCENT, Integer.parseInt(data[14]));
+        Preferences.set(EMPLOYEE_PERCENT, Integer.parseInt(data[15]));
+        Preferences.set(FF1_AMOUNT, Integer.parseInt(data[16]));
+        Preferences.set(FF1_DISCOUNT, Integer.parseInt(data[17]));
+        Preferences.set(FF1_YEAR, Integer.parseInt(data[18]));
+        Preferences.set(FF2_AMOUNT, Integer.parseInt(data[19]));
+        Preferences.set(FF2_DISCOUNT, Integer.parseInt(data[20]));
+        Preferences.set(FF2_YEAR, Integer.parseInt(data[21]));
+        Preferences.set(ANGEL_NAME, data[22]);
+        Preferences.set(ANGEL_AMOUNT, Integer.parseInt(data[23]));
+        Preferences.set(ANGEL_PERCENTAGE, Integer.parseInt(data[24]));
+        Preferences.set(ANGEL_RETURN_PREF, Integer.parseInt(data[25]));
+        Preferences.set(ANGEL_DIVIDEND, Integer.parseInt(data[26]));
+        Preferences.set(ANGEL_YEAR, Integer.parseInt(data[27]));
+        Preferences.set(PSA_NAME, data[28]);
+        /**
+                + Preferences.get(PSA_AMOUNT, 0) + "\n"
+                + Preferences.get(PSA_DISCOUNT, 0) + "\n"
+                + Preferences.get(PSA_YEAR, 0) + "\n"
+                + Preferences.get(SA_YEAR, 0) + "\n"
+                + Preferences.get(SA1_NAME, "") + "\n"
+                + Preferences.get(SA1_AMOUNT, 0) + "\n"
+                + Preferences.get(SA1_PERCENTAGE, 0) + "\n"
+                + Preferences.get(SA1_RETURN_PREF, 0) + "\n"
+                + Preferences.get(SA1_DIVIDEND, 0) + "\n"
+                + Preferences.get(SA2_NAME, "") + "\n"
+                + Preferences.get(SA2_AMOUNT, 0) + "\n"
+                + Preferences.get(SA2_PERCENTAGE, 0) + "\n"
+                + Preferences.get(SA2_RETURN_PREF, 1) + "\n"
+                + Preferences.get(SA2_DIVIDEND, 0) + "\n"
+                + Preferences.get(SA3_NAME, "") + "\n"
+                + Preferences.get(SA3_AMOUNT, 0) + "\n"
+                + Preferences.get(SA3_PERCENTAGE, 0) + "\n"
+                + Preferences.get(SA3_RETURN_PREF, 1) + "\n"
+                + Preferences.get(SA3_DIVIDEND, 0) + "\n"
+                + Preferences.get(EXIT_AMOUNT, 0L) + "\n"
+                + Preferences.get(EXIT_YEAR, 0);
+        */
+        System.out.println(text); 
     }
     
     /**
