@@ -337,29 +337,28 @@ public class CapsTable {
         Preferences.set(ANGEL_DIVIDEND, Integer.parseInt(data[26]));
         Preferences.set(ANGEL_YEAR, Integer.parseInt(data[27]));
         Preferences.set(PSA_NAME, data[28]);
-        /**
-                + Preferences.get(PSA_AMOUNT, 0) + "\n"
-                + Preferences.get(PSA_DISCOUNT, 0) + "\n"
-                + Preferences.get(PSA_YEAR, 0) + "\n"
-                + Preferences.get(SA_YEAR, 0) + "\n"
-                + Preferences.get(SA1_NAME, "") + "\n"
-                + Preferences.get(SA1_AMOUNT, 0) + "\n"
-                + Preferences.get(SA1_PERCENTAGE, 0) + "\n"
-                + Preferences.get(SA1_RETURN_PREF, 0) + "\n"
-                + Preferences.get(SA1_DIVIDEND, 0) + "\n"
-                + Preferences.get(SA2_NAME, "") + "\n"
-                + Preferences.get(SA2_AMOUNT, 0) + "\n"
-                + Preferences.get(SA2_PERCENTAGE, 0) + "\n"
-                + Preferences.get(SA2_RETURN_PREF, 1) + "\n"
-                + Preferences.get(SA2_DIVIDEND, 0) + "\n"
-                + Preferences.get(SA3_NAME, "") + "\n"
-                + Preferences.get(SA3_AMOUNT, 0) + "\n"
-                + Preferences.get(SA3_PERCENTAGE, 0) + "\n"
-                + Preferences.get(SA3_RETURN_PREF, 1) + "\n"
-                + Preferences.get(SA3_DIVIDEND, 0) + "\n"
-                + Preferences.get(EXIT_AMOUNT, 0L) + "\n"
-                + Preferences.get(EXIT_YEAR, 0);
-        */
+        Preferences.set(PSA_AMOUNT, Integer.parseInt(data[29]));
+        Preferences.set(PSA_DISCOUNT, Integer.parseInt(data[30]));
+        Preferences.set(PSA_YEAR, Integer.parseInt(data[31]));
+        Preferences.set(SA_YEAR, Integer.parseInt(data[32]));
+        Preferences.set(SA1_NAME, data[33]);
+        Preferences.set(SA1_AMOUNT, Integer.parseInt(data[34]));
+        Preferences.set(SA1_PERCENTAGE, Integer.parseInt(data[35]));
+        Preferences.set(SA1_RETURN_PREF, Integer.parseInt(data[36]));
+        Preferences.set(SA1_DIVIDEND, Integer.parseInt(data[37]));
+        Preferences.set(SA2_NAME, data[38]);
+        Preferences.set(SA2_AMOUNT, Integer.parseInt(data[39]));
+        Preferences.set(SA2_PERCENTAGE, Integer.parseInt(data[40]));
+        Preferences.set(SA2_RETURN_PREF, Integer.parseInt(data[41]));
+        Preferences.set(SA2_DIVIDEND, Integer.parseInt(data[42]));
+        Preferences.set(SA3_NAME, data[43]);
+        Preferences.set(SA3_AMOUNT, Integer.parseInt(data[44]));
+        Preferences.set(SA3_PERCENTAGE, Integer.parseInt(data[45]));
+        Preferences.set(SA3_RETURN_PREF, Integer.parseInt(data[46]));
+        Preferences.set(SA3_DIVIDEND, Integer.parseInt(data[47]));
+        Preferences.set(EXIT_AMOUNT, Long.parseLong(data[48]));
+        Preferences.set(EXIT_YEAR, Integer.parseInt(data[49]));
+        
         System.out.println(text); 
     }
     

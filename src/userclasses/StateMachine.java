@@ -34,9 +34,10 @@ public class StateMachine extends StateMachineBase {
     private int capTableTabIndex;
     private String aboutText;
     private CapsTable capsTable;
-    private final boolean DEBUG = true;
+    private final boolean DEBUG = false;
     
-    // used to generate QR code from input data
+    // used to generate QR code from input data. Really should move this
+    // to generating using internal library
     private final String QR_URL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
     
     public StateMachine(String resFile) {
@@ -114,6 +115,10 @@ public class StateMachine extends StateMachineBase {
     }
     
     private void updateMainFormInputs(Form f) {
+        if(f == null) {
+            f = Display.getInstance().getCurrent();
+        }
+        
         // set the year and other information that has been stored in properties file
         findCompanyNameTextField(f).setText(Preferences.get(COMPANY_NAME, "Acme, Inc"));
         findYearFoundedTextField(f).setText(Preferences.get(COMPANY_YEAR, "?"));
@@ -728,8 +733,7 @@ public class StateMachine extends StateMachineBase {
     protected void resetToDefaultValues() {
         if(Dialog.show("Reset Data", "Really delete current input data and reset to default values?  This cannot be undone!", "YES", "NO")) {
             capsTable.setDefaultInputValues();
-            Form f = Display.getInstance().getCurrent();
-            updateMainFormInputs(f);
+            updateMainFormInputs(null);
         } else {
             System.out.println("Smart choice ...");
         }
@@ -767,6 +771,8 @@ public class StateMachine extends StateMachineBase {
                     System.out.println("QR Scane Data:" + contents);
                     capsTable.setInputData(contents);
                     
+                    // update the UI now
+                    updateMainFormInputs(null);
                 }
 
                 @Override
@@ -794,12 +800,10 @@ public class StateMachine extends StateMachineBase {
                         System.out.println(ex);
                     }
                 }
+                
+                // update the UI now
+                updateMainFormInputs(null);
             }
         }
-        
-        // update the UI now
-        // update the UI now
-        Form f = Display.getInstance().getCurrent();
-        updateMainFormInputs(f);
     }
 }
