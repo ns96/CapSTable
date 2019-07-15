@@ -726,16 +726,11 @@ public class StateMachine extends StateMachineBase {
     
     /**
      * Reset to default data
-     * 
-     * @param c
-     * @param event 
      */
     protected void resetToDefaultValues() {
         if(Dialog.show("Reset Data", "Really delete current input data and reset to default values?  This cannot be undone!", "YES", "NO")) {
             capsTable.setDefaultInputValues();
             updateMainFormInputs(null);
-        } else {
-            System.out.println("Smart choice ...");
         }
     }
     
@@ -768,7 +763,7 @@ public class StateMachine extends StateMachineBase {
 
                 @Override
                 public void scanCompleted(String contents, String formatName, byte[] rawBytes) {
-                    System.out.println("QR Scane Data:" + contents);
+                    System.out.println("QR Scan Data:\n" + contents);
                     capsTable.setInputData(contents);
                     
                     // update the UI now
@@ -787,23 +782,22 @@ public class StateMachine extends StateMachineBase {
             });
         } else {
             System.out.println("QRCode scanner not supported ...");
-
-            if (DEBUG) {
-                InputStream in = Display.getInstance().getResourceAsStream(
-                        getClass(), "/DemoData.txt");
-                if (in != null) {
-                    try {
-                        String text = Util.readToString(in);
-                        capsTable.setInputData(text);
-                        in.close();
-                    } catch (IOException ex) {
-                        System.out.println(ex);
-                    }
+            
+            // load some dummy data for testing purposes
+            InputStream in = Display.getInstance().getResourceAsStream(
+                    getClass(), "/DemoData.txt");
+            if (in != null) {
+                try {
+                    String text = Util.readToString(in);
+                    capsTable.setInputData(text);
+                    in.close();
+                } catch (IOException ex) {
+                    System.out.println(ex);
                 }
-                
-                // update the UI now
-                updateMainFormInputs(null);
             }
+
+            // update the UI now
+            updateMainFormInputs(null);
         }
     }
 }
