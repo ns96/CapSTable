@@ -10,6 +10,8 @@ package userclasses;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ext.codescan.CodeScanner;
 import com.codename1.ext.codescan.ScanResult;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkManager;
 import com.codename1.io.Preferences;
 import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
@@ -39,6 +41,9 @@ public class StateMachine extends StateMachineBase {
     // used to generate QR code from input data. Really should move this
     // to generating using internal library
     private final String QR_URL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
+    
+    // url for generating capilization table spreadsheet using python backend 
+    private final String SPREADSHEET_URL = "https://nat250s.pythonanywhere.com/capstable/";
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -93,6 +98,9 @@ public class StateMachine extends StateMachineBase {
         
         tb.addMaterialCommandToSideMenu("QR Receive", FontImage.MATERIAL_CLOUD_DOWNLOAD, 
                 e -> {receiveQRInput();});
+        
+        tb.addMaterialCommandToSideMenu("Create Spreadsheet", FontImage.MATERIAL_TABLE_CHART, 
+                e -> {getCapTableSpreadsheet();});
         
         tb.addMaterialCommandToSideMenu("Reset Data", FontImage.MATERIAL_DELETE, 
                 e -> {resetToDefaultValues();}); 
@@ -799,5 +807,19 @@ public class StateMachine extends StateMachineBase {
             // update the UI now
             updateMainFormInputs(null);
         }
+    }
+    
+    /**
+     * Method to get a spreadsheet from the input data
+     */
+    private void getCapTableSpreadsheet() {
+        String url = SPREADSHEET_URL + Util.encodeUrl(capsTable.getInputData());
+                
+        ConnectionRequest request = new ConnectionRequest(url, false);
+        // request will be handled synchronously
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        byte[] resultOfRequest = request.getResponseData();
+        System.out.println(new String(resultOfRequest));
+
     }
 }
