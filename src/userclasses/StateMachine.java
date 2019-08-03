@@ -8,10 +8,9 @@
 package userclasses;
 
 import com.codename1.charts.util.ColorUtil;
+import com.codename1.components.ShareButton;
 import com.codename1.ext.codescan.CodeScanner;
 import com.codename1.ext.codescan.ScanResult;
-import com.codename1.io.ConnectionRequest;
-import com.codename1.io.NetworkManager;
 import com.codename1.io.Preferences;
 import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
@@ -747,6 +746,7 @@ public class StateMachine extends StateMachineBase {
      */
     private void sendQRInput() {
         String inputData = Util.encodeUrl(capsTable.getInputData());
+        System.out.println("Data: " + inputData);
         
         // must have unique name otherwise the cached imaged is used which doesn't make sense
         String filename = new Date().getTime() + "_QR.png";
@@ -814,12 +814,17 @@ public class StateMachine extends StateMachineBase {
      */
     private void getCapTableSpreadsheet() {
         String url = SPREADSHEET_URL + Util.encodeUrl(capsTable.getInputData());
-                
-        ConnectionRequest request = new ConnectionRequest(url, false);
-        // request will be handled synchronously
-        NetworkManager.getInstance().addToQueueAndWait(request);
-        byte[] resultOfRequest = request.getResponseData();
-        System.out.println(new String(resultOfRequest));
-
+        
+        //FileSystemStorage fs = FileSystemStorage.getInstance();
+        //String fileName = fs.getAppHomePath() + "capstable.txt";
+        //Util.downloadUrlToFile(url, fileName, true);
+        //System.out.println("Filename: " + fileName);
+        
+        //Dialog.show("Success", "Excel file downloaded:\n" + fileName, "OK", null);
+        
+        ShareButton sb = new ShareButton();
+        sb.setText("File Download Link");
+        sb.setTextToShare(url);
+        Dialog.show("Success", sb, new Command("Close"));
     }
 }
