@@ -98,7 +98,7 @@ public class StateMachine extends StateMachineBase {
         tb.addMaterialCommandToSideMenu("QR Receive", FontImage.MATERIAL_CLOUD_DOWNLOAD, 
                 e -> {receiveQRInput();});
         
-        tb.addMaterialCommandToSideMenu("Create Spreadsheet", FontImage.MATERIAL_TABLE_CHART, 
+        tb.addMaterialCommandToSideMenu("Spreadsheet Link", FontImage.MATERIAL_TABLE_CHART, 
                 e -> {getCapTableSpreadsheet();});
         
         tb.addMaterialCommandToSideMenu("Reset Data", FontImage.MATERIAL_DELETE, 
@@ -815,15 +815,18 @@ public class StateMachine extends StateMachineBase {
     private void getCapTableSpreadsheet() {
         String url = SPREADSHEET_URL + Util.encodeUrl(capsTable.getInputData());
         
-        //FileSystemStorage fs = FileSystemStorage.getInstance();
-        //String fileName = fs.getAppHomePath() + "capstable.txt";
-        //Util.downloadUrlToFile(url, fileName, true);
-        //System.out.println("Filename: " + fileName);
+        /* Download file to device. Not a good idea becuase there is no standard
+         * save dialog making hard for user to share actual file
+        FileSystemStorage fs = FileSystemStorage.getInstance();
+        String fileName = fs.getAppHomePath() + "capstable.txt";
+        Util.downloadUrlToFile(url, fileName, true);
+        System.out.println("Filename: " + fileName);
         
-        //Dialog.show("Success", "Excel file downloaded:\n" + fileName, "OK", null);
+        Dialog.show("Success", "Excel file downloaded:\n" + fileName, "OK", null);
+        */
         
         ShareButton sb = new ShareButton();
-        sb.setText("File Download Link");
+        sb.setText("Spreadsheet Download Link");
         sb.setTextToShare(url);
         Dialog.show("Success", sb, new Command("Close"));
     }

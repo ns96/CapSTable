@@ -10,16 +10,20 @@ from flask import Flask
 from flask import send_file
 from openpyxl import load_workbook
 from tempfile import NamedTemporaryFile
+from datetime import datetime
+import os
 
-# define the template file. change on server
-spreadsheet_file = 'cap_table_builder.xlsx';
+# define the template and data file names. change on server
+cwd = os.getcwd()
+spreadsheet_file = cwd + '/cap_table_builder.xlsx'
+data_file = cwd + '/records.txt'
 
 # the name of the flask application
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Capitalization Table Builder'
+    return 'Capitalization Table Builder v1.3 (08/05/2019)'
 
 @app.route('/capstable/<input_data>')
 def create_captable(input_data):
@@ -98,22 +102,34 @@ def create_captable(input_data):
     # update the waterfall sheet
     sheet = wb['WATERFALL']
     
-    sheet['C3'] = int(data_list[48])
-    sheet['C4'] = int(data_list[49])
+    sheet['C3'] = int(data_list[48])            # the buyout price
+    sheet['C4'] = int(data_list[49])            # the buyout year
     
     # DEBUG code
     #wb.save('TestCTB.xlsx')
+    
+    # save the data to text file now
+    save_input_data(input_data)
     
     # send the excel file
     with NamedTemporaryFile(delete=False) as tmp:
         wb.save(tmp.name)
     
     return send_file(tmp.name, attachment_filename='CapTableBuilder.xlsx', as_attachment=True)
-    #return input_data
+    #return cwd + " : " + data_file + "<br>" + input_data
 
 def to_percent(value):
     return float(value)/100
 
+def save_input_data(input_data):
+    # replace the new line characters
+    data = input_data.replace('\n', '::')
+    
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    with open(data_file, "a") as myfile:
+        myfile.write(current_time + '::' + data + '\n')
+    
 def run_test():
     input_data = 'CellTex, Inc.\n2019\n1000000\nFounder 1\n20\nFounder 2\n20\nFounder 3\n20\nFounder 4\n10\nFounder 5\n10\nFounder 6\n10\n10\n100000\n25\n2019\n150000\n20\n2019\nBio Angels\n1000000\n20\n1\n0\n2020\nJane Doe\n250000\n15\n2020\n2021\nVC # 1\n10000000\n20\n1\n0\nVC # 2\n2500000\n5\n1\n0\nVC # 3\n2500000\n5\n1\n0\n350000000\n2024'
     create_captable(input_data)
