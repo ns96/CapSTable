@@ -11,6 +11,9 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.ShareButton;
 import com.codename1.ext.codescan.CodeScanner;
 import com.codename1.ext.codescan.ScanResult;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.JSONParser;
+import com.codename1.io.NetworkManager;
 import com.codename1.io.Preferences;
 import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
@@ -18,24 +21,32 @@ import generated.StateMachineBase;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
 import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.codename1.util.MathUtil;
 import com.instras.capstable.CapsTable;
 import static com.instras.capstable.CapsTable.*;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.Map;
 
 /**
  *
  * @author Your name here
  */
 public class StateMachine extends StateMachineBase {
+    private final boolean DEBUG = false;
+    
     private int tabIndex;
     private int capTableTabIndex;
     private String aboutText;
     private CapsTable capsTable;
-    private final boolean DEBUG = false;
+    
+    // map used to store sample data loaded from backend
+    private Map sampleData;
     
     // used to generate QR code from input data. Really should move this
     // to generating using internal library
@@ -43,6 +54,9 @@ public class StateMachine extends StateMachineBase {
     
     // url for generating capilization table spreadsheet using python backend 
     private final String SPREADSHEET_URL = "https://nat250s.pythonanywhere.com/capstable/";
+    
+    // url for downloading sample input data
+    private final String SAMPLE_DATA_URL = "http://127.0.0.1:5000/companies/";
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -100,6 +114,9 @@ public class StateMachine extends StateMachineBase {
         
         tb.addMaterialCommandToSideMenu("Spreadsheet Link", FontImage.MATERIAL_TABLE_CHART, 
                 e -> {getCapTableSpreadsheet();});
+        
+        tb.addMaterialCommandToSideMenu("Sample Data", FontImage.MATERIAL_ARCHIVE, 
+                e -> {getSampleData();});
         
         tb.addMaterialCommandToSideMenu("Reset Data", FontImage.MATERIAL_DELETE, 
                 e -> {resetToDefaultValues();}); 
@@ -829,5 +846,54 @@ public class StateMachine extends StateMachineBase {
         sb.setText("Spreadsheet Download Link");
         sb.setTextToShare(url);
         Dialog.show("Success", sb, new Command("Close"));
+    }
+    
+    /**
+     * Method to download sample data
+     */
+    private void getSampleData() {
+        try {
+            ConnectionRequest req = new ConnectionRequest();
+            req.setUrl(SAMPLE_DATA_URL);
+            
+            NetworkManager.getInstance().addToQueueAndWait(req);
+            byte[] data = req.getResponseData();
+            
+            if (data != null) {
+                JSONParser parser = new JSONParser();
+                sampleData = parser.parseJSON(new InputStreamReader(new ByteArrayInputStream(data), "UTF-8"));
+                
+                System.out.println("res " + sampleData);
+                
+                // display the list now
+                showForm("DataListForm", null);
+            }
+        } catch (Exception e) { 
+            e.printStackTrace();
+        }
+    }
+    
+    @Override
+    protected void beforeDataListForm(Form f) {
+        Container list = new Container(BoxLayout.y());
+        list.setScrollableY(true);
+        
+        for(Object key : sampleData.keySet()) {
+            Button b = new Button(key.toString());
+            list.add(b);
+            b.addActionListener(e -> loadSampleData(key.toString()));
+        }
+        
+        f.add(BorderLayout.CENTER, list);
+    }
+    
+    private void loadSampleData(String key) {
+        System.out.println("Loading sample " + key);
+        if(sampleData.containsKey(key)) {
+            String inputData = sampleData.get(key).toString();
+            capsTable.setInputData(inputData);
+        }
+        
+        showForm("Main", null);
     }
 }

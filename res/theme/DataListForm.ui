@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="DataListForm" cloudDestinationProperty="DataListForm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Data List" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" >
+    <layoutConstraint value="South" />
+  </component>
+</component>

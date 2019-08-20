@@ -1804,6 +1804,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("DataListForm".equals(f.getName())) {
+            exitDataListForm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("SeriesAForm".equals(f.getName())) {
             exitSeriesAForm(f);
             aboutToShowThisContainer = null;
@@ -1852,6 +1858,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void exitDataListForm(Form f) {
+    }
+
+
     protected void exitSeriesAForm(Form f) {
     }
 
@@ -1895,6 +1905,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(f.getName())) {
             beforeCapsTableForm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(f.getName())) {
+            beforeDataListForm(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1947,6 +1963,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeDataListForm(Form f) {
+    }
+
+
     protected void beforeSeriesAForm(Form f) {
     }
 
@@ -1990,6 +2010,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(c.getName())) {
             beforeContainerCapsTableForm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(c.getName())) {
+            beforeContainerDataListForm(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -2042,6 +2068,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeContainerDataListForm(Container c) {
+    }
+
+
     protected void beforeContainerSeriesAForm(Container c) {
     }
 
@@ -2084,6 +2114,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(f.getName())) {
             postCapsTableForm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(f.getName())) {
+            postDataListForm(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -2136,6 +2172,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postDataListForm(Form f) {
+    }
+
+
     protected void postSeriesAForm(Form f) {
     }
 
@@ -2178,6 +2218,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(c.getName())) {
             postContainerCapsTableForm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(c.getName())) {
+            postContainerDataListForm(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -2230,6 +2276,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postContainerDataListForm(Container c) {
+    }
+
+
     protected void postContainerSeriesAForm(Container c) {
     }
 
@@ -2272,6 +2322,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(rootName)) {
             onCreateCapsTableForm();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(rootName)) {
+            onCreateDataListForm();
             aboutToShowThisContainer = null;
             return;
         }
@@ -2324,6 +2380,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void onCreateDataListForm() {
+    }
+
+
     protected void onCreateSeriesAForm() {
     }
 
@@ -2367,6 +2427,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(f.getName())) {
             getStateCapsTableForm(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
+        if("DataListForm".equals(f.getName())) {
+            getStateDataListForm(f, h);
             aboutToShowThisContainer = null;
             return h;
         }
@@ -2419,6 +2485,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void getStateDataListForm(Form f, Hashtable h) {
+    }
+
+
     protected void getStateSeriesAForm(Form f, Hashtable h) {
     }
 
@@ -2462,6 +2532,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("CapsTableForm".equals(f.getName())) {
             setStateCapsTableForm(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("DataListForm".equals(f.getName())) {
+            setStateDataListForm(f, state);
             aboutToShowThisContainer = null;
             return;
         }
@@ -2511,6 +2587,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void setStateCapsTableForm(Form f, Hashtable state) {
+    }
+
+
+    protected void setStateDataListForm(Form f, Hashtable state) {
     }
 
 

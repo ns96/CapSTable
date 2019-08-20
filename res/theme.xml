@@ -135,6 +135,7 @@
     <image name="ComboBox.sel#borderTopR_1.png1" type="multi"  />
     <image name="ComboBox.sel#borderTopR_1.png2" type="multi"  />
     <image name="ComboBox.sel#borderTopR_1.png3" type="multi"  />
+    <ui name="DataListForm" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottom_1.png1" type="multi"  />
     <image name="Dialog.borderBottom_1.png2" type="multi"  />

@@ -8,6 +8,7 @@ Created on Fri Aug 2 09:47:09 2019
 """
 from flask import Flask
 from flask import send_file
+from flask import jsonify
 from openpyxl import load_workbook
 from tempfile import NamedTemporaryFile
 from datetime import datetime
@@ -129,10 +130,31 @@ def save_input_data(input_data):
     
     with open(data_file, "a") as myfile:
         myfile.write(current_time + '::' + data + '\n')
+
+@app.route('/companies/', methods=['GET', 'POST'])
+def get_sample_data():
+    '''
+    Return sample data
+    '''
+    
+    input_data = 'Dummy Inc.\n2019\n1000000\nFounder 1\n20\nFounder 2\n20\nFounder 3\n20\nFounder 4\n10\nFounder 5\n10\nFounder 6\n10\n10\n100000\n25\n2019\n150000\n20\n2019\nBio Angels\n1000000\n20\n1\n0\n2020\nJane Doe\n250000\n15\n2020\n2021\nVC # 1\n10000000\n20\n1\n0\nVC # 2\n2500000\n5\n1\n0\nVC # 3\n2500000\n5\n1\n0\n350000000\n2024'
+    data_list = input_data.split('\n')
+    
+    companies = dict()
+    for i in range(1, 21):
+        company = "BioSync " + format(i, '02') + " Inc."  
+        data_list[0] = company
+        data_string = '\n'.join(data_list)
+        
+        key  = company + " -- " + data_list[1]
+        companies[key] = data_string
+    
+    return jsonify(companies)
     
 def run_test():
-    input_data = 'CellTex, Inc.\n2019\n1000000\nFounder 1\n20\nFounder 2\n20\nFounder 3\n20\nFounder 4\n10\nFounder 5\n10\nFounder 6\n10\n10\n100000\n25\n2019\n150000\n20\n2019\nBio Angels\n1000000\n20\n1\n0\n2020\nJane Doe\n250000\n15\n2020\n2021\nVC # 1\n10000000\n20\n1\n0\nVC # 2\n2500000\n5\n1\n0\nVC # 3\n2500000\n5\n1\n0\n350000000\n2024'
-    create_captable(input_data)
+    #input_data = 'CellTex, Inc.\n2019\n1000000\nFounder 1\n20\nFounder 2\n20\nFounder 3\n20\nFounder 4\n10\nFounder 5\n10\nFounder 6\n10\n10\n100000\n25\n2019\n150000\n20\n2019\nBio Angels\n1000000\n20\n1\n0\n2020\nJane Doe\n250000\n15\n2020\n2021\nVC # 1\n10000000\n20\n1\n0\nVC # 2\n2500000\n5\n1\n0\nVC # 3\n2500000\n5\n1\n0\n350000000\n2024'
+    #create_captable(input_data)
+    get_sample_data()
     
 # start the web application
 if __name__ == "__main__" :
